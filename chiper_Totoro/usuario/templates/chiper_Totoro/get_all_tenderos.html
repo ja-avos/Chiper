@@ -1,0 +1,36 @@
+{% extends 'chiper_Totoro/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="main main-raised" style="margin-top: 100px;">
+        <div class="section section-basic">
+            <div class="container">
+                {% if tenderos_list %}
+                    <ul class="list-unstyled">
+                        <div class="row row-cols-1 row-cols-md-2">
+                            {% for tendero in tenderos_list %}
+                                <div class="col border-bottom">
+                                    <li class="media my-4">
+                                        <img class="align-self-start mr-3 img-thumbnail border border-secondary"
+                                             src='https://image.flaticon.com/icons/png/512/16/16363.png'
+                                             alt="{{ tendero.name }}" style="max-height:100px; cursor: pointer;">
+                                        <div class="media-body" style='min-height:100px'>
+                                            <h3> {{ tendero.name }} </h3>
+                                            <h5> Id: {{ tendero.personalId }}</h5>
+                                            <a> Correo: {{ tendero.mail }}</a>
+                                        </div>
+                                    </li>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </ul>
+                {% else %}
+                    <div class="title">
+                        <h2>No hay tenderos disponibles <i class="material-icons">sentiment_very_dissatisfied</i></h2>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

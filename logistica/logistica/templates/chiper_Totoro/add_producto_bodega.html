@@ -1,0 +1,48 @@
+{% extends 'chiper_Totoro/base.html' %}
+{% block content %}
+<div class="main main-raised" style="margin-top: 100px">
+    <div class="section section-basic">
+        <div class="container" style="max-width: 500px">
+            <div class="title" style="text-align: center">
+                <h2>Agregar producto a bodega</h2>
+            </div>
+
+            {% load widget_tweaks %}
+
+            {% for producto in productos %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg-4 col-sm-4" style="text-align: center">
+                        <span><input type="hidden" name="productId" value="{{producto.id}}">{{producto.name}}</span>
+                    </div>
+                    <div class="col-lg-4 col-sm-4" style="text-align: center">
+                        <span><input type="number" name="cantidad"></span>
+                    </div>
+                    <div class="col-lg-4 col-sm-4" style="text-align: center">
+                        <span>
+                            <input type="submit" name='{{producto.id}}' value="+"
+                                   style="background-color: #00bcd4;border: #00bcd4;border-radius: 9px;cursor: pointer"/></input>
+                        </span>
+                    </div>
+
+                </div>
+            </form>
+            {% endfor %}
+            <div style="text-align: center">
+                <a href="/list_bodegas/{{bodega.id}}" class="btn btn-rose">Volver</a>
+            </div>
+            {% block messages %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">  <!-- singular -->
+                <a class="close" data-dismiss="alert" id="productsSuccess">×</a>
+                {{ message|safe }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}

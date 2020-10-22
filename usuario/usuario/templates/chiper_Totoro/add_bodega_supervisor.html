@@ -1,0 +1,50 @@
+{% extends 'chiper_Totoro/base.html' %}
+{% load static %}
+{% block content %}
+<div class="main main-raised" style="margin-top: 100px">
+    <div class="section section-basic">
+        <div class="container" style="max-width: 500px">
+            <div class="title" style="text-align: center">
+                <h2>Asociar bodega a supervisor</h2>
+            </div>
+
+            {% load widget_tweaks %}
+
+            {% if bodegas %}
+            {% for bodega in bodegas %}
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6" style="text-align: center">
+                        <span><input type="hidden" name="bodegaId" value="{{bodega.id}}">{{bodega.address}}</span>
+                    </div>
+                    <div class="col-lg-6 col-sm-6" style="text-align: center">
+                        <span>
+                            <input type="submit" value="+"
+                                   style="background-color: #00bcd4;border: #00bcd4;border-radius: 9px;cursor: pointer"/></input>
+                        </span>
+                    </div>
+                </div>
+            </form>
+            {% endfor %}
+            {% else %}
+            <p> No hay bodegas </p>
+            {% endif %}
+            <div style="text-align: center">
+                <a href="/list_supervisores/{{supervisor.id}}" class="btn btn-rose">Volver</a>
+            </div>
+            {% block messages %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">  <!-- singular -->
+                <a class="close" data-dismiss="alert" id="bodegasSuccess">×</a>
+                {{ message|safe }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}

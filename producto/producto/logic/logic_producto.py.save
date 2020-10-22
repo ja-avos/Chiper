@@ -1,0 +1,17 @@
+from ..models import Producto
+
+
+def get_all_productos():
+    productos = Producto.objects.all()
+    return productos
+
+
+def create_a_producto(form):
+    producto = form.save()
+  
+    return ()
+
+
+def get_producto(i):
+    producto = Producto.objects.filter(id=i)
+    return producto

@@ -1,0 +1,66 @@
+{% extends 'chiper_Totoro/base.html' %}
+{% load static %}
+{% block content %}
+<div class="main main-raised" style="margin-top: 100px;">
+    <div class="section section-basic">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="thumb">
+                                <img class="align-self-start mr-3 img-thumbnail border border-secondary"
+                                     src='https://www.flaticon.com/premium-icon/icons/svg/2954/2954827.svg'
+                                     alt="{{ tienda.address }}" style="max-height:160px"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <dl>
+                        <dt> Id</dt>
+                        <dd> {{ tienda.id }}</dd>
+                        <hr>
+                        <dt> Dirección</dt>
+                        <dd> {{ tienda.address }}</dd>
+                        <hr>
+                    </dl>
+                    {% if productos_tienda %}
+                    <h3> Productos en la tienda </h3>
+                    <ul class="list-unstyled">
+                        <div class="row row-cols-1 row-cols-md-2">
+                            <div class="col border-bottom">
+                                <table class="table">
+                                    <caption>Tabla productos</caption>
+                                    <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Precio</th>
+                                        <th scope="col" style="text-align: center">Cantidad</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for productos in productos_tienda %}
+                                    <tr>
+                                        <td>{{ productos.name }}</td>
+                                        <td>{{ productos.price }}</td>
+                                        <td style="text-align: center">{{ productos.cantidad }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </ul>
+                    {% else %}
+                    <br>
+                    <h4> No hay productos en la tienda <em class="material-icons">sentiment_very_dissatisfied</em></h4>
+                    {% endif %}
+                    <a href="{{tienda.id}}/add_producto" class="btn btn-primary">Agregar producto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

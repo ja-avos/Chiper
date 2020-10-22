@@ -1,0 +1,46 @@
+{% extends 'chiper_Totoro/base.html' %}
+{% load static %}
+{% block content %}
+<div class="main main-raised" style="margin-top: 100px;">
+    <div class="section section-basic">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="thumb">
+                                <img class="align-self-start mr-3 img-thumbnail border border-secondary"
+                                     src='https://image.flaticon.com/icons/svg/2898/2898378.svg'
+                                     alt="{{ producto.address }}" style="max-height:160px"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <dl>
+                        <dt> Id</dt>
+                        <dd> {{ producto.id }}</dd>
+                        <hr>
+                        <dt> Nombre</dt>
+                        <dd> {{ producto.name }}</dd>
+                        <hr>
+                        <dt> Fecha de expiración</dt>
+                        <dd> {{ producto.expiration_date }}</dd>
+                        <hr>
+                        <dt> ¿Es promoción?</dt>
+                        <dd> {{ producto.promotion }}</dd>
+                        <hr>
+                        <dt> Descuento</dt>
+                        <dd> {{ producto.discount }}</dd>
+                        <hr>
+                        <dt> Precio</dt>
+                        <dd> {{ producto.price }}</dd>
+                        <hr>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

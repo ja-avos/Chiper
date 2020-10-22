@@ -1,0 +1,50 @@
+{% extends 'chiper_Totoro/base.html' %}
+{% block content %}
+    <br>
+    <div class="panel panel-default">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="thumb">
+                            <img class="align-self-start mr-3 img-thumbnail border border-secondary"
+                                 src='https://image.flaticon.com/icons/svg/46/46028.svg'
+                                 alt="{{ pedido.address }}" style="max-height:160px; cursor: pointer;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <dl>
+                    <dt> Id</dt>
+                    <dd> {{ pedido.id }} </dd>
+                    <hr>
+                    <dt> Tendero</dt>
+                    <dd> {{ pedido.tendero }} </dd>
+                    <hr>
+                    <dt> Tienda</dt>
+                    <dd> {{ pedido.tienda }} </dd>
+                    <hr>
+                    <dt> Direccion Tienda</dt>
+                    <dd> {{ pedido.direccionTienda }} </dd>
+                    <hr>
+                    <dt> ---</dt>
+                    <dd> {{ pedido.estado }} </dd>
+                    <hr>
+                </dl>
+            </div>
+        </div>
+        <a href="{{pedido.id}}/add_producto">agregar</a>
+                {% if productos_pedido %}
+        <ul>
+            {% for productos in productos_pedido %}
+            <li>{{productos.name}} : {{productos.cantidad}}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Lo sentimos, no hay suficientes productos</p>
+        {% endif %}
+    </div>
+
+{% endblock %}

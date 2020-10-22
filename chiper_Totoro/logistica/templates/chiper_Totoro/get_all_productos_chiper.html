@@ -1,0 +1,39 @@
+{% extends 'chiper_Totoro/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="main main-raised" style="margin-top: 100px;">
+        <div class="section section-basic">
+            <div class="container">
+                {% if productos_chiper_list %}
+                    <ul class="list-unstyled">
+                        <div class="row row-cols-1 row-cols-md-2">
+                            {% for producto_chiper in productos_chiper_list %}
+                                <div class="col border-bottom">
+                                    <li class="media my-4">
+                                        <img class="align-self-start mr-3 img-thumbnail border border-secondary"
+                                             src='https://image.flaticon.com/icons/svg/1170/1170679.svg'
+                                             alt="{{ producto_chiper.name }}"
+                                             style="max-height:100px; cursor: pointer;">
+                                        <div class="media-body" style='min-height:100px'>
+                                            <h3> {{ producto_chiper.name }} </h3>
+                                            <h5> Id: {{ producto_chiper.id }}</h5>
+                                            <a> Precio: {{ producto_chiper.price }}</a>
+                                            <br>
+                                            <a> Bodega: {{ producto_chiper.bodega.id }}</a>
+                                        </div>
+                                    </li>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </ul>
+                {% else %}
+                    <div class="title">
+                        <h2>No hay productos Chiper registrados <i
+                                class="material-icons">sentiment_very_dissatisfied</i></h2>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

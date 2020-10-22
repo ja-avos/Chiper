@@ -1,0 +1,28 @@
+{% extends 'chiper_Totoro/base.html' %}
+{% block content %}
+<br><br><br><br><br><br>
+    {% if pedidos_list %}
+        <ul class="list-unstyled">
+            <div class="row row-cols-1 row-cols-md-2">
+                {% for pedido in pedidos_list %}
+                    <div class="col border-bottom">
+                        <li class="media my-4">
+                            <img class="align-self-start mr-3 img-thumbnail border border-secondary"
+                            src='https://image.flaticon.com/icons/png/512/2921/2921839.png'
+                                 alt="{{ pedido.id }}" style="max-height:100px; cursor: pointer;">
+                            <div class="media-body" style='min-height:100px'>
+                                <p> {{ pedido.id }}</p>
+                            </div>
+                        </li>
+                    </div>
+                {% endfor %}
+            </div>
+        </ul>
+
+    {% else %}
+        <br>
+        <h4> No hay pedidos registrados </h4>
+    {% endif %}
+{% endblock %}
+
+

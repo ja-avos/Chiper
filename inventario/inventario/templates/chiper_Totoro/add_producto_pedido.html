@@ -1,0 +1,21 @@
+{% extends 'chiper_Totoro/base.html' %}
+{% block content %}
+    <br>
+    <h2>Agregar producto a pedido</h2>
+    <ul>
+        {% for producto in productos %}
+            <form method="POST">
+                {% csrf_token %}
+                <li><input type="hidden" name="productId" value = "{{producto.id}}">{{producto.name}}
+                    <input type="number" name="cantidad"> <input type="submit" name = '{{producto.id}}'value="+"/>
+                </li>
+            </form>
+        {% endfor %}
+    </ul>
+     {% if messages %}
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

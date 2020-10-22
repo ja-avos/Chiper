@@ -1,0 +1,50 @@
+{% extends 'chiper_Totoro/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="main main-raised" style="margin-top: 100px;">
+    <div class="section section-basic">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="thumb">
+                                <img class="align-self-start mr-3 img-thumbnail border border-secondary"
+                                     src='https://image.flaticon.com/icons/svg/2640/2640878.svg'
+                                     alt="{{ bodega.address }}" style="max-height:160px"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <dl>
+                        <dt> Id</dt>
+                        <dd> {{ supervisor.personalId }}</dd>
+                        <hr>
+                        <dt> Nombre</dt>
+                        <dd> {{ supervisor.name }}</dd>
+                        <hr>
+                        <dt> Correo</dt>
+                        <dd> {{ supervisor.mail }}</dd>
+                        <hr>
+                    </dl>
+                    {% if bodega_supervisor != None %}
+                    <h3> Bodega supervisada </h3>
+                    <ul>
+                        <li><a href="/list_bodegas/{{bodega_supervisor.bodega}}">{{bodega_supervisor.bodega}}</a></li>
+                    </ul>
+
+                    {% else %}
+                    <br>
+                    <h4> No supervisas ninguna bodega <em class="material-icons">sentiment_very_dissatisfied</em></h4>
+                    {% endif %}
+
+                    <a href="{{supervisor.id}}/agregar_bodega" class="btn btn-primary">Agregar bodega</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

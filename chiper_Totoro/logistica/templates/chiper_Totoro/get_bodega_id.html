@@ -1,0 +1,64 @@
+{% extends 'chiper_Totoro/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="main main-raised" style="margin-top: 100px;">
+        <div class="section section-basic">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <div class="thumb">
+                                    <img class="align-self-start mr-3 img-thumbnail border border-secondary"
+                                         src='https://image.flaticon.com/icons/svg/46/46028.svg'
+                                         alt="{{ bodega.address }}" style="max-height:160px; cursor: pointer;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <dl>
+                            <dt> Id</dt>
+                            <dd> {{ bodega.id }} </dd>
+                            <hr>
+                            <dt> Dirección</dt>
+                            <dd> {{ bodega.address }} </dd>
+                            <hr>
+                        </dl>
+                        {% if productos_chiper_bodega %}
+                            <h3> Productos en la bodega </h3>
+                            <ul class="list-unstyled">
+                                <div class="row row-cols-1 row-cols-md-2">
+                                    <div class="col border-bottom">
+                                        <table class="table">
+                                            <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Nombre</th>
+                                                <th scope="col">Precio</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for producto in productos_chiper_bodega %}
+                                                <tr>
+                                                    <th scope="row">{{ producto.id }}</th>
+                                                    <td>{{ producto.name }}</td>
+                                                    <td>{{ producto.price }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </ul>
+                        {% else %}
+                            <br>
+                            <h4> No hay productos en la bodega </h4>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

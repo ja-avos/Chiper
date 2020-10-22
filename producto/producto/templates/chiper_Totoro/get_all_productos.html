@@ -1,0 +1,36 @@
+{% extends 'chiper_Totoro/base.html' %}
+{% load static %}
+{% block content %}
+<div class="main main-raised" style="margin-top: 100px;">
+    <div class="section section-basic">
+        <div class="container">
+            {% if productos_list %}
+            <ul class="list-unstyled">
+                <div class="row">
+                    {% for producto in productos_list %}
+                    <div class="col-lg-4 col-sm-4 border-bottom">
+                        <li class="media my-4">
+                            <a href="./{{producto.id}}"><img
+                                    class="align-self-start mr-3 img-thumbnail border border-secondary"
+                                    src='https://image.flaticon.com/icons/svg/2898/2898378.svg'
+                                    alt="{{ producto.name }}" style="max-height:100px; cursor: pointer;"></a>
+                            <div class="media-body" style='min-height:100px'>
+                                <h3> <a href="./{{producto.id}}">{{ producto.name }}</a> </h3>
+                                <h5> Precio: {{ producto.price }}</h5>
+                            </div>
+                        </li>
+                    </div>
+                    {% endfor %}
+                </div>
+            </ul>
+            {% else %}
+            <div class="title">
+                <h2>No hay productos <em class="material-icons">sentiment_very_dissatisfied</em></h2>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
